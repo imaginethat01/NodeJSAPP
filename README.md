@@ -49,6 +49,7 @@ NPM OMDB
 
 <HR> 
  dotenv ^5.0.1,
+<br>
     node-spotify-api ^1.0.7
     omdb ^0.8.0"
 <br>
