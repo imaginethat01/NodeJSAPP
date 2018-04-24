@@ -51,7 +51,9 @@ NPM OMDB
  dotenv ^5.0.1,
 <br>
     node-spotify-api ^1.0.7
+<br>
     omdb ^0.8.0"
 <br>
     request ^2.85.0"
+<br>
     twitter ^1.7.1",
