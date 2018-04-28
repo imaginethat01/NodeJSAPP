@@ -58,6 +58,6 @@ NPM OMDB
 <br>
     twitter "^1.7.1",
 
-ADDITIONAL packages are included in package.JSON. THE lower portion of keys.env may be commented out. 
+ADDITIONAL packages are included in package.JSON. the lower portion of keys.env may be commented out. Spotify Documentation suggests needing the bottom potion for in app authentication. 
 
 
