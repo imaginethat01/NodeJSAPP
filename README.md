@@ -3,7 +3,7 @@ A simple text app using node js.
 
 Run these commands in example formats to see results.
 <br>
-node liri.js spotify-this-song + your-song-name-with-dashes 
+node liri.js spotify-this-song + your song name
 <br>
 = A spotify search based on those terms, and a href for app linking.
   An example search object using spotify's api call for "Blink 182's song / All the small things.
@@ -57,3 +57,7 @@ NPM OMDB
     request "^2.85.0",
 <br>
     twitter "^1.7.1",
+
+ADDITIONAL packages are included in package.JSON. the lower portion of keys.js may be commented out. Spotify Documentation suggests needing the bottom potion for in app authentication. 
+
+
