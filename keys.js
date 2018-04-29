@@ -1,7 +1,8 @@
 console.log('keys are go');
+var fs = require('fs');
+const dotenv = require('dotenv');
 
-const dotenv = require('dotenv')
-// will return an object
+
 
 exports.twitter = {
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
@@ -163,3 +164,4 @@ app.get('/refresh_token', function(req, res) {
 
 console.log('Listening on 8888');
 app.listen(8888);
+console.log('IMMA FIRING MAH LASER');

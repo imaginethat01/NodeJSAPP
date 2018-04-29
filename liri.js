@@ -1,7 +1,7 @@
-var fs = require('fs')
- var dotenv = require('dotenv').config()
+var fs = require('fs');
+ const dotenv = require('dotenv').config();
 
-var keys = require('./keys.js')
+var keys = require('./keys.js');
 
 var request = require('request');
 var action = process.argv[2];
@@ -27,9 +27,12 @@ switch (action) {
 
     
 function spotifySearch () {
-    
+    var fs = require('fs');
     var Spotify = require('node-spotify-api');
+    const dotenv = require('dotenv').config();
     var keys = require('./keys.js');
+
+
 
     var spotify = new Spotify(keys.spotify);
 
@@ -50,8 +53,9 @@ spotify
 
 
 function artistData() { 
-
+  var fs = require('fs');
   var Spotify = require('node-spotify-api');
+  const dotenv = require('dotenv').config();
   var keys = require('./keys.js');
 
   var spotify = new Spotify(keys.spotify);
@@ -70,15 +74,13 @@ spotify
 }
 
 function myTweets () {
-
+    var fs = require('fs');
+    const dotenv = require('dotenv').config();
     var Twitter = require('twitter');
+    var keys = require('./keys.js');
 
-    var client = new Twitter({
-        consumer_key: process.env.TWITTER_CONSUMER_KEY,
-        consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-        access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
-        access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
-    })
+
+    var client = new Twitter(keys.twitter);
 
 var params = {screen_name: 'imaginethatidea'};
 client.get('statuses/user_timeline', params, function(error, response, body ) {
@@ -105,6 +107,8 @@ function movieThis () {
     }
 
     function rickRoll () {
+
+      const dotenv = require('dotenv').config();
       var Spotify = require('node-spotify-api');
       var keys = require('./keys.js');
     
