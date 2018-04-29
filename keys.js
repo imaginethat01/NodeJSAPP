@@ -17,6 +17,16 @@ exports.spotify = {
 
 };
 
+
+
+
+
+// TA'S - LET ME KNOW IF I NEED TO TEMPLATE THIS (BELOW) THE HECK OUT OF HERE! - I DON'T MIND. BELOW IS CODE FROM THE SPOTIFY API DOCS.
+// IT MAY NOT BE NEEDED IN OUR CASE. BUT I'M REACHING HERE. I'VE FOUND CONFLICTING DOCUMENTATION AND I'M HONESTLY CONFUSED.  
+
+
+
+
 var express = require('express'); // Express web server framework
 var request = require('request'); // "Request" library
 var querystring = require('querystring');

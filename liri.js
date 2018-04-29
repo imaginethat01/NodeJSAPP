@@ -1,7 +1,7 @@
 var fs = require('fs')
-require('dotenv').config()
+ var dotenv = require('dotenv').config()
 
-require('./keys.js')
+var keys = require('./keys.js')
 
 var request = require('request');
 var action = process.argv[2];
@@ -13,6 +13,7 @@ switch (action) {
     
     case "spotify-this-song":
       spotifySearch();
+      artistData();
       break;
     
     case "movie-this":
@@ -28,16 +29,11 @@ switch (action) {
 function spotifySearch () {
     
     var Spotify = require('node-spotify-api');
-    require('./keys.js')
+    var keys = require('./keys.js');
 
-    
-    var spotify =  new Spotify({
-    id: process.env.client_id,
-    secret: process.env.client_secret,
-    access_token: process.env.access_token,
- });
+    var spotify = new Spotify(keys.spotify);
 
- var trackName = process.argv[3] + '+' + process.argv[4];
+ var trackName = process.argv[3] + '+' + process.argv[4]
  var queryQRL = 'https://api.spotify.com/v1/search?query=' + trackName + '&type=track&offset=5&limit=10'
 
 spotify
@@ -51,6 +47,27 @@ spotify
   });
 }
 
+
+
+function artistData() { 
+
+  var Spotify = require('node-spotify-api');
+  var keys = require('./keys.js');
+
+  var spotify = new Spotify(keys.spotify);
+
+
+var queryQRL = "https://api.spotify.com/v1/artists/5ksRONqssB7BR161NTtJAm"
+spotify
+.request(queryQRL)
+  .then(function(response) {
+    console.log(response) 
+  })
+  .catch(function(err) {
+    console.error('Error occurred: ' + err); 
+
+  });
+}
 
 function myTweets () {
 
@@ -88,14 +105,12 @@ function movieThis () {
     }
 
     function rickRoll () {
-        
-        var spotify = new Spotify({
-        id: process.env.SPOTIFY_ID,
-        secret: process.env.SPOTIFY_SECRET,
-        access_token: process.env.SPOTIFY_ACCESS_TOKEN
-     })
+      var Spotify = require('node-spotify-api');
+      var keys = require('./keys.js');
+    
+      var spotify = new Spotify(keys.spotify);
       
-     spotify.search({ type: 'track', query: 'Never Gonna Give You Up', limit: 1 }, function(err, data) {
+     spotify.request({ type: 'track', query: 'Never Gonna Give You Up', limit: 1 }, function(err, data) {
         if (err) {
           return console.log('Error occurred: ' + err);
         }
