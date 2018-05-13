@@ -5,7 +5,6 @@ var request = require('request');
 var Spotify = require('node-spotify-api');
 var Twitter = require('twitter');
 
-
 var action = process.argv[2];
 
 switch (action) {
@@ -68,51 +67,49 @@ function myTweets () {
 
   client.get('statuses/user_timeline', params, function(error, response, body ) {
   if (!error) { 
-    for (var i=0; i<2; i++) {
-      console.log( response[i].text );
-      console.log( response[i].created_at );
+  for (var i=0; i<2; i++) {
+  console.log( response[i].text );
+  console.log( response[i].created_at );
 
-    }
-  }
-  });
-  }
+}
+}
+});
+}
 
 
 function movieThis () {
-  var args = process.argv.slice(2); 
+    var args = process.argv.slice(2); 
     var movieName = args.slice(1).join(' '); 
     var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=473102bb";
 
   
 
 
-    request(queryUrl, function(error, response, body) {
-      var bodyParse = JSON.parse(body); 
+  request(queryUrl, function(error, response, body) {
+  var bodyParse = JSON.parse(body); 
 
-      if (!error && response.statusCode === 200) {
-          console.log( "\nTitle: " +  bodyParse.Title +
-                        "\nRelease Year: " +  bodyParse.Year +
-                        "IMDB: " +  bodyParse.imdbRating +
-                        "Actors: " +  bodyParse.Actors +      
-                        "Language:" +  bodyParse.Language + 
-                        "Country:" +  bodyParse.Country +
-                        "Plot:" +  bodyParse.Plot ) }
-    });
-    }
+  if (!error && response.statusCode === 200) {
+  console.log( "\nTitle: " +  bodyParse.Title +
+  "\nRelease Year: " +  bodyParse.Year +
+  "\nIMDB: " +  bodyParse.imdbRating +
+  "\nActors: " +  bodyParse.Actors +      
+  "\nLanguage:" +  bodyParse.Language + 
+  "\nCountry:" +  bodyParse.Country +
+  "\nPlot:" +  bodyParse.Plot ) }
 
-    function rickRoll () {
+});
+}
+
+  function rickRoll () {
+
+      fs.readFile('random.txt', 'utf8' , (err, data) => {
+      if (err) throw err;
+      console.log(data);
 
       var spotify = new Spotify(keys.spotify);
-
-      var query = 
-
-      spotify.request({ type: 'track', query , limit: 1 }, function(err, data) {
-        if (err) {
-          return console.log('Error occurred: ' + err);
-        }
-        console.log(data); 
-        });
-    
-      }
-    
-    
+      spotify.search({ type: 'track', query: data , limit: 1 }, function(err, data) {
+      if (err) { return console.log('Error occurred: ' + err); }
+      console.log(data); 
+});    
+});
+}
